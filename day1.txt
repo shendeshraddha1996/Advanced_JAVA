@@ -1,0 +1,157 @@
+Q.19
+=====================
+
+package ServletDemo;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/home_page")
+public class Q19 extends HttpServlet{
+	String message;
+	@Override
+	public void init() throws ServletException {
+		message="WELCOME TO SERVLET WORLD ";
+
+	}
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html");
+		PrintWriter out=resp.getWriter();
+		out.print("<h1>"+message+"</h1>");
+	}
+	
+	@Override
+	public void destroy() {
+		
+	}
+}
+
+
+Q.20
+====================
+package ServletDemo;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.DateFormatter;
+
+@WebServlet("/current_date")
+public class Q20 extends HttpServlet{
+	String message;
+	@Override
+	public void init() throws ServletException {
+		
+
+	}
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html");
+		PrintWriter out=resp.getWriter();
+		 Date date = new Date();
+		out.print(date.toString()+"<br>");
+		
+		out.println("========================"+"<br>");
+		String FormatDate;
+		SimpleDateFormat dateinformat=new SimpleDateFormat("dd/mm/yyyy");
+		FormatDate = dateinformat.format(date);
+		out.print("curent date  = "+FormatDate);
+	}
+	
+	@Override
+	public void destroy() {
+		
+	}
+}
+
+
+Q.22
+====================
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="get_req" method="get">
+		<input type="submit" value="GET REQUEST DEMO "></input>
+	</form>
+	<br>
+	<form action="post_req" method="post">
+		<input type="submit" value="POST REQUEST DEMO "></input>
+	</form>
+</body>
+</html>
+-----------------------------------------------
+package ServletDemo;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+@WebServlet("/get_req")
+public class Q21_GetServlet extends HttpServlet{
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html");
+		PrintWriter out=resp.getWriter();
+		out.print("<b>YOU SELECTED GET TYPE REQUEST</b>");
+		out.flush();
+		out.close();
+	}
+}
+---------------------------------------
+package ServletDemo;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/post_req")
+public class Q21_PostServlet extends HttpServlet{
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html");
+		PrintWriter out=resp.getWriter();
+		out.print("<b>YOU SELECTED POST TYPE REQUEST</b>");
+		out.flush();
+		out.close();
+	}
+}
+
+Q.21
+====================
+
+
+
+
+
+
+
+
+
